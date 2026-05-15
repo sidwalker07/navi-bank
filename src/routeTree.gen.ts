@@ -9,38 +9,300 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SupervisorDashboardRouteImport } from './routes/supervisor.dashboard'
+import { Route as ManagerDashboardRouteImport } from './routes/manager.dashboard'
+import { Route as CustomerTransferRouteImport } from './routes/customer.transfer'
+import { Route as CustomerProfileRouteImport } from './routes/customer.profile'
+import { Route as CustomerLoansRouteImport } from './routes/customer.loans'
+import { Route as CustomerDashboardRouteImport } from './routes/customer.dashboard'
+import { Route as CustomerAccountsRouteImport } from './routes/customer.accounts'
+import { Route as ClerkDashboardRouteImport } from './routes/clerk.dashboard'
+import { Route as BrokerDashboardRouteImport } from './routes/broker.dashboard'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminLoansRouteImport } from './routes/admin.loans'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminConfigRouteImport } from './routes/admin.config'
+import { Route as AdminAuditRouteImport } from './routes/admin.audit'
+import { Route as CustomerLoansApplyRouteImport } from './routes/customer.loans.apply'
+import { Route as CustomerLoansIdRouteImport } from './routes/customer.loans.$id'
+import { Route as CustomerAccountsIdRouteImport } from './routes/customer.accounts.$id'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupervisorDashboardRoute = SupervisorDashboardRouteImport.update({
+  id: '/supervisor/dashboard',
+  path: '/supervisor/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManagerDashboardRoute = ManagerDashboardRouteImport.update({
+  id: '/manager/dashboard',
+  path: '/manager/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerTransferRoute = CustomerTransferRouteImport.update({
+  id: '/customer/transfer',
+  path: '/customer/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerProfileRoute = CustomerProfileRouteImport.update({
+  id: '/customer/profile',
+  path: '/customer/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerLoansRoute = CustomerLoansRouteImport.update({
+  id: '/customer/loans',
+  path: '/customer/loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerDashboardRoute = CustomerDashboardRouteImport.update({
+  id: '/customer/dashboard',
+  path: '/customer/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerAccountsRoute = CustomerAccountsRouteImport.update({
+  id: '/customer/accounts',
+  path: '/customer/accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClerkDashboardRoute = ClerkDashboardRouteImport.update({
+  id: '/clerk/dashboard',
+  path: '/clerk/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerDashboardRoute = BrokerDashboardRouteImport.update({
+  id: '/broker/dashboard',
+  path: '/broker/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoansRoute = AdminLoansRouteImport.update({
+  id: '/admin/loans',
+  path: '/admin/loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminConfigRoute = AdminConfigRouteImport.update({
+  id: '/admin/config',
+  path: '/admin/config',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAuditRoute = AdminAuditRouteImport.update({
+  id: '/admin/audit',
+  path: '/admin/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerLoansApplyRoute = CustomerLoansApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => CustomerLoansRoute,
+} as any)
+const CustomerLoansIdRoute = CustomerLoansIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => CustomerLoansRoute,
+} as any)
+const CustomerAccountsIdRoute = CustomerAccountsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => CustomerAccountsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loans': typeof AdminLoansRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/clerk/dashboard': typeof ClerkDashboardRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/manager/dashboard': typeof ManagerDashboardRoute
+  '/supervisor/dashboard': typeof SupervisorDashboardRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loans': typeof AdminLoansRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/clerk/dashboard': typeof ClerkDashboardRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/manager/dashboard': typeof ManagerDashboardRoute
+  '/supervisor/dashboard': typeof SupervisorDashboardRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loans': typeof AdminLoansRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/clerk/dashboard': typeof ClerkDashboardRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/manager/dashboard': typeof ManagerDashboardRoute
+  '/supervisor/dashboard': typeof SupervisorDashboardRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/admin/audit'
+    | '/admin/config'
+    | '/admin/dashboard'
+    | '/admin/loans'
+    | '/admin/users'
+    | '/broker/dashboard'
+    | '/clerk/dashboard'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/manager/dashboard'
+    | '/supervisor/dashboard'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/admin/audit'
+    | '/admin/config'
+    | '/admin/dashboard'
+    | '/admin/loans'
+    | '/admin/users'
+    | '/broker/dashboard'
+    | '/clerk/dashboard'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/manager/dashboard'
+    | '/supervisor/dashboard'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/register'
+    | '/admin/audit'
+    | '/admin/config'
+    | '/admin/dashboard'
+    | '/admin/loans'
+    | '/admin/users'
+    | '/broker/dashboard'
+    | '/clerk/dashboard'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/manager/dashboard'
+    | '/supervisor/dashboard'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  AdminAuditRoute: typeof AdminAuditRoute
+  AdminConfigRoute: typeof AdminConfigRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLoansRoute: typeof AdminLoansRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  BrokerDashboardRoute: typeof BrokerDashboardRoute
+  ClerkDashboardRoute: typeof ClerkDashboardRoute
+  CustomerAccountsRoute: typeof CustomerAccountsRouteWithChildren
+  CustomerDashboardRoute: typeof CustomerDashboardRoute
+  CustomerLoansRoute: typeof CustomerLoansRouteWithChildren
+  CustomerProfileRoute: typeof CustomerProfileRoute
+  CustomerTransferRoute: typeof CustomerTransferRoute
+  ManagerDashboardRoute: typeof ManagerDashboardRoute
+  SupervisorDashboardRoute: typeof SupervisorDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +310,172 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/supervisor/dashboard': {
+      id: '/supervisor/dashboard'
+      path: '/supervisor/dashboard'
+      fullPath: '/supervisor/dashboard'
+      preLoaderRoute: typeof SupervisorDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manager/dashboard': {
+      id: '/manager/dashboard'
+      path: '/manager/dashboard'
+      fullPath: '/manager/dashboard'
+      preLoaderRoute: typeof ManagerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/transfer': {
+      id: '/customer/transfer'
+      path: '/customer/transfer'
+      fullPath: '/customer/transfer'
+      preLoaderRoute: typeof CustomerTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/profile': {
+      id: '/customer/profile'
+      path: '/customer/profile'
+      fullPath: '/customer/profile'
+      preLoaderRoute: typeof CustomerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/loans': {
+      id: '/customer/loans'
+      path: '/customer/loans'
+      fullPath: '/customer/loans'
+      preLoaderRoute: typeof CustomerLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/dashboard': {
+      id: '/customer/dashboard'
+      path: '/customer/dashboard'
+      fullPath: '/customer/dashboard'
+      preLoaderRoute: typeof CustomerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/accounts': {
+      id: '/customer/accounts'
+      path: '/customer/accounts'
+      fullPath: '/customer/accounts'
+      preLoaderRoute: typeof CustomerAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clerk/dashboard': {
+      id: '/clerk/dashboard'
+      path: '/clerk/dashboard'
+      fullPath: '/clerk/dashboard'
+      preLoaderRoute: typeof ClerkDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/dashboard': {
+      id: '/broker/dashboard'
+      path: '/broker/dashboard'
+      fullPath: '/broker/dashboard'
+      preLoaderRoute: typeof BrokerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/loans': {
+      id: '/admin/loans'
+      path: '/admin/loans'
+      fullPath: '/admin/loans'
+      preLoaderRoute: typeof AdminLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/config': {
+      id: '/admin/config'
+      path: '/admin/config'
+      fullPath: '/admin/config'
+      preLoaderRoute: typeof AdminConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/audit': {
+      id: '/admin/audit'
+      path: '/admin/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AdminAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/loans/apply': {
+      id: '/customer/loans/apply'
+      path: '/apply'
+      fullPath: '/customer/loans/apply'
+      preLoaderRoute: typeof CustomerLoansApplyRouteImport
+      parentRoute: typeof CustomerLoansRoute
+    }
+    '/customer/loans/$id': {
+      id: '/customer/loans/$id'
+      path: '/$id'
+      fullPath: '/customer/loans/$id'
+      preLoaderRoute: typeof CustomerLoansIdRouteImport
+      parentRoute: typeof CustomerLoansRoute
+    }
+    '/customer/accounts/$id': {
+      id: '/customer/accounts/$id'
+      path: '/$id'
+      fullPath: '/customer/accounts/$id'
+      preLoaderRoute: typeof CustomerAccountsIdRouteImport
+      parentRoute: typeof CustomerAccountsRoute
+    }
   }
 }
 
+interface CustomerAccountsRouteChildren {
+  CustomerAccountsIdRoute: typeof CustomerAccountsIdRoute
+}
+
+const CustomerAccountsRouteChildren: CustomerAccountsRouteChildren = {
+  CustomerAccountsIdRoute: CustomerAccountsIdRoute,
+}
+
+const CustomerAccountsRouteWithChildren =
+  CustomerAccountsRoute._addFileChildren(CustomerAccountsRouteChildren)
+
+interface CustomerLoansRouteChildren {
+  CustomerLoansIdRoute: typeof CustomerLoansIdRoute
+  CustomerLoansApplyRoute: typeof CustomerLoansApplyRoute
+}
+
+const CustomerLoansRouteChildren: CustomerLoansRouteChildren = {
+  CustomerLoansIdRoute: CustomerLoansIdRoute,
+  CustomerLoansApplyRoute: CustomerLoansApplyRoute,
+}
+
+const CustomerLoansRouteWithChildren = CustomerLoansRoute._addFileChildren(
+  CustomerLoansRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  AdminAuditRoute: AdminAuditRoute,
+  AdminConfigRoute: AdminConfigRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLoansRoute: AdminLoansRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  BrokerDashboardRoute: BrokerDashboardRoute,
+  ClerkDashboardRoute: ClerkDashboardRoute,
+  CustomerAccountsRoute: CustomerAccountsRouteWithChildren,
+  CustomerDashboardRoute: CustomerDashboardRoute,
+  CustomerLoansRoute: CustomerLoansRouteWithChildren,
+  CustomerProfileRoute: CustomerProfileRoute,
+  CustomerTransferRoute: CustomerTransferRoute,
+  ManagerDashboardRoute: ManagerDashboardRoute,
+  SupervisorDashboardRoute: SupervisorDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
