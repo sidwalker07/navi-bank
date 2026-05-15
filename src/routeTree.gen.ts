@@ -12,6 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CustomerTransferRouteImport } from './routes/customer.transfer'
+import { Route as CustomerProfileRouteImport } from './routes/customer.profile'
+import { Route as CustomerLoansRouteImport } from './routes/customer.loans'
+import { Route as CustomerDashboardRouteImport } from './routes/customer.dashboard'
+import { Route as CustomerAccountsRouteImport } from './routes/customer.accounts'
+import { Route as CustomerLoansApplyRouteImport } from './routes/customer.loans.apply'
+import { Route as CustomerLoansIdRouteImport } from './routes/customer.loans.$id'
+import { Route as CustomerAccountsIdRouteImport } from './routes/customer.accounts.$id'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -28,35 +36,138 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CustomerTransferRoute = CustomerTransferRouteImport.update({
+  id: '/customer/transfer',
+  path: '/customer/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerProfileRoute = CustomerProfileRouteImport.update({
+  id: '/customer/profile',
+  path: '/customer/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerLoansRoute = CustomerLoansRouteImport.update({
+  id: '/customer/loans',
+  path: '/customer/loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerDashboardRoute = CustomerDashboardRouteImport.update({
+  id: '/customer/dashboard',
+  path: '/customer/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerAccountsRoute = CustomerAccountsRouteImport.update({
+  id: '/customer/accounts',
+  path: '/customer/accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerLoansApplyRoute = CustomerLoansApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => CustomerLoansRoute,
+} as any)
+const CustomerLoansIdRoute = CustomerLoansIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => CustomerLoansRoute,
+} as any)
+const CustomerAccountsIdRoute = CustomerAccountsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => CustomerAccountsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/customer/accounts': typeof CustomerAccountsRouteWithChildren
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/loans': typeof CustomerLoansRouteWithChildren
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/transfer': typeof CustomerTransferRoute
+  '/customer/accounts/$id': typeof CustomerAccountsIdRoute
+  '/customer/loans/$id': typeof CustomerLoansIdRoute
+  '/customer/loans/apply': typeof CustomerLoansApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/register'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/register'
-  id: '__root__' | '/' | '/login' | '/register'
+  to:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/register'
+    | '/customer/accounts'
+    | '/customer/dashboard'
+    | '/customer/loans'
+    | '/customer/profile'
+    | '/customer/transfer'
+    | '/customer/accounts/$id'
+    | '/customer/loans/$id'
+    | '/customer/loans/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  CustomerAccountsRoute: typeof CustomerAccountsRouteWithChildren
+  CustomerDashboardRoute: typeof CustomerDashboardRoute
+  CustomerLoansRoute: typeof CustomerLoansRouteWithChildren
+  CustomerProfileRoute: typeof CustomerProfileRoute
+  CustomerTransferRoute: typeof CustomerTransferRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,13 +193,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/customer/transfer': {
+      id: '/customer/transfer'
+      path: '/customer/transfer'
+      fullPath: '/customer/transfer'
+      preLoaderRoute: typeof CustomerTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/profile': {
+      id: '/customer/profile'
+      path: '/customer/profile'
+      fullPath: '/customer/profile'
+      preLoaderRoute: typeof CustomerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/loans': {
+      id: '/customer/loans'
+      path: '/customer/loans'
+      fullPath: '/customer/loans'
+      preLoaderRoute: typeof CustomerLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/dashboard': {
+      id: '/customer/dashboard'
+      path: '/customer/dashboard'
+      fullPath: '/customer/dashboard'
+      preLoaderRoute: typeof CustomerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/accounts': {
+      id: '/customer/accounts'
+      path: '/customer/accounts'
+      fullPath: '/customer/accounts'
+      preLoaderRoute: typeof CustomerAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/loans/apply': {
+      id: '/customer/loans/apply'
+      path: '/apply'
+      fullPath: '/customer/loans/apply'
+      preLoaderRoute: typeof CustomerLoansApplyRouteImport
+      parentRoute: typeof CustomerLoansRoute
+    }
+    '/customer/loans/$id': {
+      id: '/customer/loans/$id'
+      path: '/$id'
+      fullPath: '/customer/loans/$id'
+      preLoaderRoute: typeof CustomerLoansIdRouteImport
+      parentRoute: typeof CustomerLoansRoute
+    }
+    '/customer/accounts/$id': {
+      id: '/customer/accounts/$id'
+      path: '/$id'
+      fullPath: '/customer/accounts/$id'
+      preLoaderRoute: typeof CustomerAccountsIdRouteImport
+      parentRoute: typeof CustomerAccountsRoute
+    }
   }
 }
+
+interface CustomerAccountsRouteChildren {
+  CustomerAccountsIdRoute: typeof CustomerAccountsIdRoute
+}
+
+const CustomerAccountsRouteChildren: CustomerAccountsRouteChildren = {
+  CustomerAccountsIdRoute: CustomerAccountsIdRoute,
+}
+
+const CustomerAccountsRouteWithChildren =
+  CustomerAccountsRoute._addFileChildren(CustomerAccountsRouteChildren)
+
+interface CustomerLoansRouteChildren {
+  CustomerLoansIdRoute: typeof CustomerLoansIdRoute
+  CustomerLoansApplyRoute: typeof CustomerLoansApplyRoute
+}
+
+const CustomerLoansRouteChildren: CustomerLoansRouteChildren = {
+  CustomerLoansIdRoute: CustomerLoansIdRoute,
+  CustomerLoansApplyRoute: CustomerLoansApplyRoute,
+}
+
+const CustomerLoansRouteWithChildren = CustomerLoansRoute._addFileChildren(
+  CustomerLoansRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  CustomerAccountsRoute: CustomerAccountsRouteWithChildren,
+  CustomerDashboardRoute: CustomerDashboardRoute,
+  CustomerLoansRoute: CustomerLoansRouteWithChildren,
+  CustomerProfileRoute: CustomerProfileRoute,
+  CustomerTransferRoute: CustomerTransferRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
