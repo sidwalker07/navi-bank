@@ -14,7 +14,7 @@ function ApplyLoan() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate({ to: "/customer/loans" });
+          navigate({ to: "/customer/loans/$id", params: { id: "LN-2055" } });
         }}
         className="rounded-xl border border-border bg-card p-6 max-w-2xl"
       >
