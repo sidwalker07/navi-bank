@@ -3,7 +3,7 @@ import { AppShell, PageHeader, StatusBadge } from "@/components/AppShell";
 import { customerLoans, loanStatusLabel } from "@/lib/mock-data";
 import { Plus } from "lucide-react";
 
-export const Route = createFileRoute("/customer/loans")({
+export const Route = createFileRoute("/customer/loans/")({
   component: LoansList,
 });
 
