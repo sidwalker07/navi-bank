@@ -121,9 +121,9 @@ const CustomerLoansApplyRoute = CustomerLoansApplyRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerLoansIdRoute = CustomerLoansIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => CustomerLoansRoute,
+  id: '/customer/loans/$id',
+  path: '/customer/loans/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerAccountsIdRoute = CustomerAccountsIdRouteImport.update({
   id: '/$id',
@@ -284,6 +284,7 @@ export interface RootRouteChildren {
   CustomerTransferRoute: typeof CustomerTransferRoute
   ManagerDashboardRoute: typeof ManagerDashboardRoute
   SupervisorDashboardRoute: typeof SupervisorDashboardRoute
+  CustomerLoansIdRoute: typeof CustomerLoansIdRoute
   CustomerLoansApplyRoute: typeof CustomerLoansApplyRoute
   CustomerLoansIndexRoute: typeof CustomerLoansIndexRoute
 }
@@ -418,10 +419,10 @@ declare module '@tanstack/react-router' {
     }
     '/customer/loans/$id': {
       id: '/customer/loans/$id'
-      path: '/$id'
+      path: '/customer/loans/$id'
       fullPath: '/customer/loans/$id'
       preLoaderRoute: typeof CustomerLoansIdRouteImport
-      parentRoute: typeof CustomerLoansRoute
+      parentRoute: typeof rootRouteImport
     }
     '/customer/accounts/$id': {
       id: '/customer/accounts/$id'
@@ -461,19 +462,10 @@ const rootRouteChildren: RootRouteChildren = {
   CustomerTransferRoute: CustomerTransferRoute,
   ManagerDashboardRoute: ManagerDashboardRoute,
   SupervisorDashboardRoute: SupervisorDashboardRoute,
+  CustomerLoansIdRoute: CustomerLoansIdRoute,
   CustomerLoansApplyRoute: CustomerLoansApplyRoute,
   CustomerLoansIndexRoute: CustomerLoansIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
